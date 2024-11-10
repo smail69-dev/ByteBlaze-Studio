@@ -1,0 +1,167 @@
+{
+    "javascript": {
+        "frameworks": {
+            "react": {
+                "name": "React",
+                "version": "18.2.0",
+                "cdnUrl": "https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js",
+                "dependencies": ["react-dom"],
+                "boilerplate": {
+                    "app.js": "import React from 'react';\nimport ReactDOM from 'react-dom';\n\nfunction App() {\n  return (\n    <div>\n      <h1>Hello React!</h1>\n    </div>\n  );\n}\n\nReactDOM.render(<App />, document.getElementById('root'));"
+                }
+            },
+            "vue": {
+                "name": "Vue.js",
+                "version": "3.3.4",
+                "cdnUrl": "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js",
+                "boilerplate": {
+                    "app.js": "const { createApp } = Vue\n\nconst app = createApp({\n  data() {\n    return {\n      message: 'Hello Vue!'\n    }\n  }\n})\n\napp.mount('#app')"
+                }
+            }
+        },
+        "backend": {
+            "express": {
+                "name": "Express.js",
+                "version": "4.18.2",
+                "type": "node",
+                "dependencies": [
+                    "body-parser",
+                    "cors",
+                    "dotenv"
+                ],
+                "boilerplate": {
+                    "server.js": "const express = require('express');\nconst cors = require('cors');\nconst bodyParser = require('body-parser');\n\nconst app = express();\nconst port = process.env.PORT || 3000;\n\napp.use(cors());\napp.use(bodyParser.json());\n\napp.get('/', (req, res) => {\n  res.send('Hello World!');\n});\n\napp.listen(port, () => {\n  console.log(`Server running on port ${port}`);\n});",
+                    ".env": "PORT=3000\nNODE_ENV=development"
+                },
+                "packageJson": {
+                    "dependencies": {
+                        "express": "^4.18.2",
+                        "body-parser": "^1.20.2",
+                        "cors": "^2.8.5",
+                        "dotenv": "^16.0.3"
+                    }
+                }
+            },
+            "nestjs": {
+                "name": "NestJS",
+                "version": "10.0.0",
+                "type": "node",
+                "dependencies": [
+                    "@nestjs/common",
+                    "@nestjs/core",
+                    "@nestjs/platform-express"
+                ],
+                "boilerplate": {
+                    "main.ts": "import { NestFactory } from '@nestjs/core';\nimport { AppModule } from './app.module';\n\nasync function bootstrap() {\n  const app = await NestFactory.create(AppModule);\n  await app.listen(3000);\n}\nbootstrap();",
+                    "app.module.ts": "import { Module } from '@nestjs/common';\nimport { AppController } from './app.controller';\nimport { AppService } from './app.service';"
+                }
+            }
+        },
+        "utilities": {
+            "lodash": {
+                "name": "Lodash",
+                "version": "4.17.21",
+                "cdnUrl": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+            },
+            "axios": {
+                "name": "Axios",
+                "version": "1.4.0",
+                "cdnUrl": "https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+            },
+            "moment": {
+                "name": "Moment.js",
+                "version": "2.29.4",
+                "cdnUrl": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
+            }
+        }
+    },
+    "python": {
+        "web": {
+            "flask": {
+                "name": "Flask",
+                "version": "2.3.3",
+                "type": "pip",
+                "dependencies": [
+                    "flask-cors",
+                    "python-dotenv"
+                ],
+                "boilerplate": {
+                    "app.py": "from flask import Flask, jsonify\nfrom flask_cors import CORS\nfrom dotenv import load_dotenv\nimport os\n\nload_dotenv()\n\napp = Flask(__name__)\nCORS(app)\n\n@app.route('/')\ndef hello_world():\n    return jsonify(message='Hello, World!')\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+                    ".env": "FLASK_APP=app.py\nFLASK_ENV=development\nPORT=5000"
+                },
+                "requirements": {
+                    "flask": "^2.3.3",
+                    "flask-cors": "^4.0.0",
+                    "python-dotenv": "^1.0.0"
+                }
+            },
+            "django": {
+                "name": "Django",
+                "version": "4.2.4",
+                "type": "pip",
+                "dependencies": [
+                    "djangorestframework",
+                    "django-cors-headers"
+                ],
+                "boilerplate": {
+                    "settings.py": "# Django settings boilerplate",
+                    "urls.py": "from django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path('', views.home, name='home'),\n]"
+                }
+            }
+        },
+        "data": {
+            "pandas": {
+                "name": "Pandas",
+                "version": "2.0.3",
+                "type": "pip",
+                "boilerplate": {
+                    "data_analysis.py": "import pandas as pd\n\n# Read data\ndf = pd.read_csv('data.csv')\n\n# Basic analysis\nprint(df.describe())"
+                }
+            },
+            "numpy": {
+                "name": "NumPy",
+                "version": "1.25.2",
+                "type": "pip"
+            },
+            "scikit-learn": {
+                "name": "Scikit-learn",
+                "version": "1.3.0",
+                "type": "pip",
+                "dependencies": [
+                    "numpy",
+                    "scipy"
+                ]
+            }
+        }
+    },
+    "typescript": {
+        "utilities": {
+            "typescript": {
+                "name": "TypeScript",
+                "version": "5.2.2",
+                "type": "npm",
+                "boilerplate": {
+                    "tsconfig.json": "{\n  \"compilerOptions\": {\n    \"target\": \"es6\",\n    \"module\": \"commonjs\",\n    \"strict\": true,\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"forceConsistentCasingInFileNames\": true\n  }\n}"
+                }
+            }
+        }
+    },
+    "css": {
+        "frameworks": {
+            "tailwindcss": {
+                "name": "Tailwind CSS",
+                "version": "3.3.3",
+                "cdnUrl": "https://cdn.tailwindcss.com",
+                "boilerplate": {
+                    "tailwind.config.js": "module.exports = {\n  content: ['./src/**/*.{html,js}'],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}"
+                }
+            },
+            "bootstrap": {
+                "name": "Bootstrap",
+                "version": "5.3.1",
+                "cdnUrl": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css",
+                "jsUrl": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+            }
+        }
+    }
+}
